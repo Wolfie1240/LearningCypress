@@ -1,0 +1,28 @@
+
+describe('Simple calculation', () => {
+    it('passes', () => {
+      cy.visit("/")
+      cy.findByRole("button", { name: "1" })
+      .click()
+      cy.findByRole("button", { name: "+" })
+      .click()
+      cy.findByRole("button", { name: "2" })
+      .click()
+      cy.findByRole("button", { name: "+" })
+      .click()
+      cy.findByRole("button", { name: "3" })
+      .click()
+      cy.findByRole("button", { name: "+" })
+      .click()
+      cy.findByRole("button", { name: "4" })
+      .click()
+      cy.findByRole("button", { name: "÷" })
+      .click()
+      cy.findByRole("button", { name: "5" })
+      .click()
+      cy.findByRole("button", { name: "=" })
+      .click()
+      cy.findByText("II").should("exist")
+    
+    })
+  })
