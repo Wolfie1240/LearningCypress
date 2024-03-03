@@ -1,0 +1,71 @@
+
+
+describe('Confirms that history shows correct previous calculations', () => {
+    it('passes', () => {
+        // Arrange
+      cy.visit("/register")
+      cy.findByLabelText("Email").type("hessro@oregonstate.edu")
+      cy.findByLabelText("Password").type("abc123ABC!!!")
+      cy.findByRole("button", { name: "Register" })
+      .click()
+      cy.findByText("Login").click()
+      cy.findByLabelText("Email").type("hessro@oregonstate.edu")
+      cy.findByLabelText("Password").type("abc123ABC!!!")
+      cy.findByRole("button", { name: "Login" })
+      .click()
+
+      // Act
+      cy.findByRole("button", { name: "1" })
+      .click()
+      cy.findByRole("button", { name: "+" })
+      .click()
+      cy.findByRole("button", { name: "2" })
+      .click()
+      cy.findByRole("button", { name: "+" })
+      .click()
+      cy.findByRole("button", { name: "3" })
+      .click()
+      cy.findByRole("button", { name: "=" })
+      .click()
+      cy.findByRole("button", { name: "6" })
+      .click()
+      cy.findByRole("button", { name: "−" })
+      .click()
+      cy.findByRole("button", { name: "2" })
+      .click()
+      cy.findByRole("button", { name: "=" })
+      .click()
+      cy.findByRole("button", { name: "×" })
+      .click()
+      cy.findByRole("button", { name: "9" })
+      .click()
+      cy.findByRole("button", { name: "=" })
+      .click()
+      cy.findByRole("button", { name: "5" })
+      .click()
+      cy.findByRole("button", { name: "×" })
+      .click()
+      cy.findByRole("button", { name: "9" })
+      .click()
+      cy.findByRole("button", { name: "=" })
+      .click()
+      cy.findByRole("button", { name: "÷" })
+      .click()
+      cy.findByRole("button", { name: "5" })
+      .click()
+      cy.findByRole("button", { name: "=" })
+      .click()
+
+      cy.findByText("History").click()
+
+
+      // Assert
+      cy.findByText("I + II + III = VI").should("exist")
+      cy.findByText("VI − II = IIII").should("exist")
+      cy.findByText("IIII × VIIII = XXXVI").should("exist")
+      cy.findByText("V × VIIII = XXXXV").should("exist")
+      cy.findByText("XXXXV ÷ V = VIIII").should("exist")
+
+      
+    })
+  })
